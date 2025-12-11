@@ -1,34 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Hello</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 50px;
-        }
-        a {
-            text-decoration: none;
-            color: blue;
-            font-size: 20px;
-        }
-        a:hover {
-            color: darkblue;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kartu Data Pribadi — Tema Galaxy</title>
+  <style>
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+
+    /* Background galaxy */
+    body{
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(ellipse at 20% 10%, rgba(120,72,255,0.14) 0%, rgba(20,8,45,0.0) 20%),
+                  radial-gradient(ellipse at 90% 70%, rgba(0,200,255,0.06) 0%, rgba(20,8,45,0.0) 20%),
+                  #050014;
+      color:#e7f0ff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      overflow:hidden;
+    }
+
+    /* Stars layer */
+    .stars, .stars2, .stars3{
+      position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;
+      background-repeat:repeat;
+      pointer-events:none;
+    }
+    .stars{background-image:radial-gradient(#ffffff 1px, transparent 1px);background-size:18px 18px;opacity:0.6;animation:moveStars 60s linear infinite}
+    .stars2{background-image:radial-gradient(#ffffff 1px, transparent 1px);background-size:30px 30px;opacity:0.35;animation:moveStars 120s linear infinite}
+    .stars3{background-image:radial-gradient(#9bbcff 1px, transparent 1px);background-size:70px 70px;opacity:0.12;animation:moveStars 240s linear infinite}
+    @keyframes moveStars{from{transform:translateY(0)}to{transform:translateY(-2000px)}}
+
+    /* Nebula glow */
+    .nebula{
+      position:fixed;inset: -20% -10% auto auto;width:60vmax;height:60vmax;z-index:0;filter:blur(80px);opacity:0.8;
+      background:linear-gradient(135deg, rgba(182,102,255,0.28), rgba(0,210,255,0.18) 40%, rgba(255,120,180,0.12));
+      transform:translate(10%, -10%) rotate(-10deg);
+    }
+
+    /* Card */
+    .card{
+      position:relative;z-index:2;max-width:880px;width:92%;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.06);backdrop-filter: blur(8px);box-shadow:0 10px 40px rgba(2,6,23,0.7);
+      border-radius:20px;padding:28px;display:flex;gap:24px;align-items:center;
+    }
+
+    .avatar{
+      flex:0 0 160px;height:160px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;
+      background:conic-gradient(from 180deg at 50% 50%, rgba(255,255,255,0.06), rgba(0,210,255,0.06));
+      border:1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 6px 24px rgba(16,9,40,0.6), inset 0 -6px 18px rgba(0,0,0,0.25);
+    }
+
+    .info{flex:1}
+    .title{font-size:20px;font-weight:600;letter-spacing:0.6px;margin-bottom:6px}
+    .subtitle{font-size:14px;color:rgba(231,240,255,0.82);margin-bottom:14px}
+
+    .meta{display:flex;gap:12px;flex-wrap:wrap}
+    .meta .item{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);min-width:180px}
+    .meta .label{font-size:12px;color:rgba(231,240,255,0.7);margin-bottom:6px}
+    .meta .value{font-size:16px;font-weight:600}
+
+    /* Small decorative orbit */
+    .orbit{
+      position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;border:1px dashed rgba(255,255,255,0.03);transform:rotate(25deg);opacity:0.7;z-index:1
+    }
+    .planet{
+      position:absolute;width:18px;height:18px;border-radius:50%;right:20px;top:10px;background:linear-gradient(180deg,#ffd18a,#ff8fb6);box-shadow:0 6px 16px rgba(255,140,180,0.18);
+    }
+
+    /* Footer line */
+    .foot{margin-top:18px;font-size:12px;color:rgba(231,240,255,0.6)}
+
+    /* Responsive */
+    @media (max-width:640px){
+      .card{flex-direction:column;align-items:flex-start;padding:20px}
+      .avatar{width:120px;height:120px}
+      .orbit{display:none}
+    }
+  </style>
 </head>
 <body>
+  <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="stars3"></div>
+  <div class="nebula"></div>
 
-    <h1>ranggaaaa</h1>
-    <p>Website berhasil di-deploy ke Vercel!</p>
+  <main class="card" role="main" aria-labelledby="judul">
+    <div class="avatar" aria-hidden="true">RW</div>
 
-    <br><br>
+    <section class="info">
+      <h1 id="judul" class="title">Kartu Data Pribadi</h1>
+      <p class="subtitle">Tema: Galaxy — Desain modern, cocok untuk portofolio atau tampilan profil singkat.</p>
 
-    <a href="/">Kembali ke halaman utama</a>
+      <div class="meta">
+        <div class="item">
+          <div class="label">Nama</div>
+          <div class="value">Rangga Wijaya</div>
+        </div>
 
+        <div class="item">
+          <div class="label">Program Studi</div>
+          <div class="value">Informatika</div>
+        </div>
+
+        <div class="item">
+          <div class="label">Universitas</div>
+          <div class="value">Universitas Bandar Lampung</div>
+        </div>
+      </div>
+
+      <p class="foot">Made with ✨ — Kalau mau versi PDF, kartu kecil, atau versi React/Tailwind, bilang saja.</p>
+    </section>
+
+    <div class="orbit" aria-hidden="true">
+      <div class="planet"></div>
+    </div>
+  </main>
 </body>
 </html>
-
